@@ -151,6 +151,52 @@ tr:nth-child(even) {
         flex: 2;
         text-align: right;
     }
+}/* Ajuste para coluna "Término Indicações" não cortar */
+table, th, td {
+    box-sizing: border-box;
+}
+
+th:last-child, td:last-child {
+    min-width: 120px; /* ajusta largura mínima da última coluna */
+}
+
+td {
+    word-break: break-word; /* permite quebrar palavras longas */
+    white-space: normal;    /* permite quebra de linha dentro da célula */
+}/* CENTRALIZAR TODA A TABELA */
+th, td {
+    text-align: center;      /* centraliza horizontalmente */
+    vertical-align: middle;  /* centraliza verticalmente */
+} /* Força a tabela a ajustar colunas conforme o conteúdo */
+table {
+    table-layout: auto;
+    width: 100%;
+}
+
+/* Centraliza todas as células */
+th, td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Evita quebra de palavras em colunas de siglas (ODS, Código, Área, Turma) */
+td[data-label="ODS"],
+td[data-label="Código"],
+td[data-label="Área"],
+td[data-label="Turma"] {
+    white-space: nowrap; /* não quebra */
+}
+
+/* Permite quebra apenas nas colunas longas (Nome, Local, Responsável) */
+td[data-label="Nome"],
+td[data-label="Local"],
+td[data-label="Responsável"] {
+    word-wrap: break-word;
+}/* Evita que datas quebrem na coluna Início e Término */
+td[data-label="Início"],
+td[data-label="Término"],
+td[data-label="Término Indicações"] {
+    white-space: nowrap; /* mantém tudo em uma linha */
 }
 </style>
 </head>
@@ -179,6 +225,8 @@ tr:nth-child(even) {
         <option value="11">Novembro</option>
         <option value="12">Dezembro</option>
     </select>
+<button id="clearBtn">Limpar</button>
+<button id="printBtn">📄 Imprimir / Exportar PDF</button>
 </div>
 
 <div class="table-wrapper">
@@ -209,7 +257,7 @@ tr:nth-child(even) {
 <strong>Orientação:</strong><br>
 Havendo interesse em algum dos cursos, o militar ou servidor deverá, previamente, consultar seu gestor imediato.
 Após a devida aprovação, deverá preencher a <strong>Ficha de Indicação para Capacitação (FIC)</strong>,
-disponível no link:<br>
+disponível no link:<br> 
 <a href="https://docs.google.com/document/d/1W1-kYmIo5o9FuX8tyXlIkDL7VsACXTo93J6iKi2OlQg/edit?usp=sharing" target="_blank">
 https://docs.google.com/document/d/1W1-kYmIo5o9FuX8tyXlIkDL7VsACXTo93J6iKi2OlQg/edit?usp=sharing
 </a><br><br>
@@ -376,10 +424,75 @@ function updateCounter(){
 
 document.getElementById("searchInput").addEventListener("input",()=>{currentPage=1;renderTable();});
 document.getElementById("monthFilter").addEventListener("change",()=>{currentPage=1;renderTable();});
-
+// 🔹 Aqui é o listener do botão limpar
+document.getElementById("clearBtn").addEventListener("click", () => {
+    document.getElementById("searchInput").value = "";
+    document.getElementById("monthFilter").value = "";
+    currentPage = 1;
+    renderTable();
+});
 updateCounter();
-renderTable();
-</script>
+renderTable();document.getElementById("printBtn").addEventListener("click", () => {
+    // Guarda a página atual
+    const oldPage = currentPage;
+
+    // Filtra os dados atuais, de acordo com pesquisa e mês
+    const search = document.getElementById("searchInput").value.toLowerCase();
+    const selectedMonth = document.getElementById("monthFilter").value;
+
+    const filtered = data.filter(r => {
+        const textMatch = r.join(" ").toLowerCase().includes(search);
+        const monthMatch = selectedMonth ? r[10].split("/")[1] === selectedMonth : true;
+        return textMatch && monthMatch;
+    });
+
+    // Renderiza todas as linhas filtradas temporariamente
+    const tbody = document.querySelector("#courseTable tbody");
+    tbody.innerHTML = "";
+    filtered.forEach(r => {
+        const tr = document.createElement("tr");
+        r.forEach((c, index) => {
+            const td = document.createElement("td");
+            td.setAttribute("data-label", document.querySelectorAll("th")[index].textContent);
+            td.innerHTML = `<span>${c}</span>`;
+            tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+    });
+
+    // Pega o conteúdo da tabela, contador, orientação e observação
+    const tableContent = document.querySelector(".table-wrapper").innerHTML;
+    const counterContent = document.getElementById("counter").outerHTML;
+    const orientacaoContent = document.querySelector(".orientacao").outerHTML;
+    const obsContent = document.querySelector(".obs").outerHTML;
+
+    // Pega os estilos
+    const styles = Array.from(document.querySelectorAll("style, link[rel='stylesheet']"))
+                        .map(s => s.outerHTML)
+                        .join("\n");
+
+    // Abre a janela de impressão
+    const printWindow = window.open("", "_blank", "width=1000,height=800");
+    printWindow.document.write("<html><head><title>Agenda de Capacitação</title>");
+    printWindow.document.write(styles);
+    printWindow.document.write("</head><body>");
+    printWindow.document.write("<h1>AGENDA DE CAPACITAÇÃO GAP-LS 2026</h1>");
+    printWindow.document.write("<h2>Subseção de Instrução e Capacitação (DRH-6)</h2>");
+    printWindow.document.write(counterContent);
+    printWindow.document.write(tableContent);
+    printWindow.document.write(orientacaoContent);
+    printWindow.document.write(obsContent);
+    printWindow.document.write("</body></html>");
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+
+    // Restaura a tabela normal com paginação
+    renderTable();
+    currentPage = oldPage;
+});
+
+    </script>
 
 </body>
 </html>
