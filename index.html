@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agenda de Capacitação – DRH-6</title>
+
+<style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    margin: 20px;
+}
+
+h1 {
+    color: #003366;
+    margin-bottom: 5px;
+}
+
+h2 {
+    color: #555;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.container {
+    background: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+.filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+input, select {
+    padding: 6px;
+    font-size: 14px;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+th {
+    background: #003366;
+    color: #fff;
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+td {
+    padding: 6px;
+    border: 1px solid #ccc;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+.pagination {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    margin: 2px;
+    border: 1px solid #003366;
+    background: #fff;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background: #003366;
+    color: #fff;
+}
+
+.counter {
+    margin-top: 10px;
+    text-align: right;
+    font-size: 13px;
+}
+
+.orientacao, .obs {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.obs {
+    padding-top: 10px;
+    border-top: 2px solid #003366;
+}
+
+/* --- RESPONSIVO --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .filters {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 10px;
+        background: #fff;
+    }
+
+    td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        flex: 1;
+    }
+
+    td span {
+        flex: 2;
+        text-align: right;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>AGENDA DE CAPACITAÇÃO GAP-LS 2026</h1>
+<h2>Subseção de Instrução e Capacitação (DRH-6)</h2>
+
+<div class="container">
+
+<div class="filters">
+    <input type="text" id="searchInput" placeholder="Buscar curso...">
+    <select id="monthFilter">
+        <option value="">Filtrar mês término indicações</option>
+        <option value="01">Janeiro</option>
+        <option value="02">Fevereiro</option>
+        <option value="03">Março</option>
+        <option value="04">Abril</option>
+        <option value="05">Maio</option>
+        <option value="06">Junho</option>
+        <option value="07">Julho</option>
+        <option value="08">Agosto</option>
+        <option value="09">Setembro</option>
+        <option value="10">Outubro</option>
+        <option value="11">Novembro</option>
+        <option value="12">Dezembro</option>
+    </select>
+</div>
+
+<div class="table-wrapper">
+<table id="courseTable">
+<thead>
+<tr>
+<th>ODS</th>
+<th>Código</th>
+<th>Nome</th>
+<th>Local</th>
+<th>Área</th>
+<th>Responsável</th>
+<th>Turma</th>
+<th>Início</th>
+<th>Término</th>
+<th>Status</th>
+<th>Término Indicações</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+
+<div class="pagination" id="pagination"></div>
+<div class="counter" id="counter"></div>
+
+<div class="orientacao">
+<strong>Orientação:</strong><br>
+Havendo interesse em algum dos cursos, o militar ou servidor deverá, previamente, consultar seu gestor imediato.
+Após a devida aprovação, deverá preencher a <strong>Ficha de Indicação para Capacitação (FIC)</strong>,
+disponível no link:<br>
+<a href="https://docs.google.com/document/d/1W1-kYmIo5o9FuX8tyXlIkDL7VsACXTo93J6iKi2OlQg/edit?usp=sharing" target="_blank">
+https://docs.google.com/document/d/1W1-kYmIo5o9FuX8tyXlIkDL7VsACXTo93J6iKi2OlQg/edit?usp=sharing
+</a><br><br>
+Em seguida, deverá encaminhar requerimento à <strong>DRH-6</strong>, por meio do <strong>SIGADAER</strong>,
+solicitando autorização para o prosseguimento do processo de indicação de matrícula.
+</div>
+
+<div class="obs">
+<strong>Observação:</strong><br>
+📍Em caso de dúvidas, entrar em contato com:<br>
+• 2T Daniele Campos – 2112-9557<br>
+• 3S Nathália Amaral – 2112-9534<br>
+• 3S Lorrayne Mel – 2112-9574
+</div>
+
+</div>
+
+<script>
+const rowsPerPage = 10;
+let currentPage = 1;
+
+const data = [  ["COMGEP","PCP","CURSO BÁSICO DE PRIMEIROS CUIDADOS PSICOLÓGICOS EM ACIDENTES, EMERGÊNCIAS E DESASTRES","EAD/Rio de Janeiro","COMGEP","IPA","1","06/04/2026","17/04/2026","INSC. ABERTAS","29/01/2026"],
+  ["COMGEP","CAMEAD","CURSO AVANÇADO DE MÍDIAS","EAD","SDAD-CTP","CIAAR","1","16/03/2026","31/05/2026","INSC. ABERTAS","30/01/2026"],
+  ["COMGEP","CGD","CURSO DE GESTÃO DE DOCUMENTOS","ITA","COMGEP","CENDOC","1","09/03/2026","13/03/2026","INSC. ABERTAS","30/01/2026"],
+  ["COMGEP","CPEAC","CURSO DE POLÍTICAS E ESTRATÉGIAS FRENTE ÀS AMEAÇAS COMPLEXAS","EAD/Rio de Janeiro","COMGEP","ESG","1","08/06/2026","26/06/2026","INSC. ABERTAS","30/01/2026"],
+  ["COMGEP","CPEAMS Extra","CURSO DE PREVENÇÃO E ENFRENTAMENTO AO ASSÉDIO MORAL E SEXUAL","EAD","COMGEP","DIRENS","1","02/02/2026","20/02/2026","INSC. ABERTAS","30/01/2026"],
+  ["COMGEP","CPG","CURSO DE PSICÓLOGO DE GUARNIÇÃO","EAD","COMGEP","IPA","1","02/03/2026","31/03/2026","INSC. ABERTAS","30/01/2026"],
+  ["COMGEP","CPT","CURSO DE PREPARAÇÃO DE TUTORES","EAD","COMPREP","CIAAR","1","23/03/2026","22/05/2026","INSC. ABERTAS","30/01/2026"],
+  ["DECEA","SEL011","SEGURANÇA EM INSTALAÇÕES E SERVIÇOS COM ELETRICIDADE","1/1 GCC","SDTE-TMEM","1 GCC","1","23/03/2026","27/03/2026","INSC. ABERTAS","01/02/2026"],
+  ["DECEA","SEL011","SEGURANÇA EM INSTALAÇÕES E SERVIÇOS COM ELETRICIDADE","CINDACTA II","SDTE-TMEM","CINDACTA II","2","23/03/2026","27/03/2026","INSC. ABERTAS","01/02/2026"],
+  ["COMGEP","CPAv","CURSO DE PSICOLOGIA DA AVIAÇÃO","EAD/Rio de Janeiro","COMGEP","IPA","1","04/05/2026","31/07/2026","INSC. ABERTAS","06/02/2026"],
+  ["COMGAP","CBIT-MB","CURSO BÁSICO DE INGLÊS TÉCNICO PARA MATERIAL BÉLICO","ILAVIRTUAL","SISMAB","ILA","1","06/04/2026","03/05/2026","INSC. ABERTAS","06/02/2026"],
+  ["COMGAP","COEM","CURSO DE OPERADOR DE EQUIPAMENTOS MECANIZADOS","BABE","SISCAN","ILA","2","06/04/2026","18/04/2026","INSC. ABERTAS","06/02/2026"],
+  ["COMGEP","CPEAMS","CURSO DE PREVENÇÃO E ENFRENTAMENTO AO ASSÉDIO MORAL E SEXUAL","EAD","COMGEP","DIRENS","1","06/04/2026","20/04/2026","INSC. ABERTAS","13/02/2026"],
+  ["DECEA","SEL011","SEGURANÇA EM INSTALAÇÕES E SERVIÇOS COM ELETRICIDADE","CINDACTA IV","SDTE-TMEM","CINDACTA IV","3","06/04/2026","10/04/2026","INSC. ABERTAS","15/02/2026"],
+  ["DECEA","SEL013M","RECICLAGEM DE SEGURANÇA EM INSTALAÇÕES E SERVIÇOS EM ELETRICIDADE","ICEAVIRTUAL","SDTE-TMEM","ICEA","1","06/04/2026","24/04/2026","INSC. ABERTAS","15/02/2026"],
+  ["DECEA","AIS011","CURSO DE APERFEIÇOAMENTO NA GESTÃO DA INFORMAÇÃO AERONÁUTICA","ICEA","SDOP-AIS","ICEA","1","06/04/2026","17/04/2026","INSC. ABERTAS","15/02/2026"],
+  ["DECEA","ASE009S","GERENCIAMENTO DO RISCO À SEGURANÇA OPERACIONAL NO SISCEAB","ICEAVIRTUAL/ICEA/ICEA","DECEA-ASEG","ICEA","1","06/04/2026","15/05/2026","INSC. ABERTAS","15/02/2026"],
+  ["DECEA","CLI001","BÁSICO DE MANUTENÇÃO PREVENTIVA NÍVEL ORGÂNICO E BASE EM SISTEMAS DE CLIMATIZAÇÃO PARA A HABILITAÇÃO DE TÉCNICOS NÍVEL PLENO","DTCEATF","SDTE-TMEM","CINDACTA IV","2","06/04/2026","01/05/2026","INSC. ABERTAS","15/02/2026"],
+  ["DECEA","CTP001","CAPACITAÇÃO PARA INSTRUTORES","CINDACTA IV","SDAD-CTP","CINDACTA IV","3","06/04/2026","17/04/2026","INSC. ABERTAS","15/02/2026"],
+  ["DECEA","APH004","CAPACITAÇÃO E RECICLAGEM EM SEGURANÇA PARA TRABALHO EM ALTURA DO SISCEAB - NÍVEL 1","DTCEATRM","SDAD-AIN","CINDACTA I","2","07/04/2026","09/04/2026","INSC. ABERTAS","16/02/2026"],
+  ["DECEA","APH004","CAPACITAÇÃO E RECICLAGEM EM SEGURANÇA PARA TRABALHO EM ALTURA DO SISCEAB - NÍVEL 1","CINDACTA I","SDAD-AIN","CINDACTA I","3","07/04/2026","09/04/2026","INSC. ABERTAS","16/02/2026"],
+  ["DECEA","APH004","CAPACITAÇÃO E RECICLAGEM EM SEGURANÇA PARA TRABALHO EM ALTURA DO SISCEAB - NÍVEL 1","CRCEA-SE","SDAD-AIN","CRCEA-SE","4","08/04/2026","10/04/2026","INSC. ABERTAS","17/02/2026"],
+  ["COMGEP","CBIA","CURSO BÁSICO DE INTELIGÊNCIA ARTIFICIAL","EAD","COMGEP","CIAAR","1","23/03/2026","09/04/2026","INSC. ABERTAS","19/02/2026"],
+  ["COMGEP","CATF","CURSO PARA APLICAÇÃO DO TESTE DE CONDICIONAMENTO FÍSICO","EAD/EPCAR","COMGEP","CDA","2","06/04/2026","24/04/2026","INSC. ABERTAS","20/02/2026"],
+  ["COMGEP","CGIB","CURSO DE GESTÃO DA INFORMAÇÃO NA ÁREA DE BIBLIOTECONOMIA","BANT","COMGEP","CENDOC","1","13/04/2026","17/04/2026","INSC. ABERTAS","20/02/2026"],
+  ["COMGEP","CPIDIM","CURSO DE PREPARAÇÃO DE INSTRUTORES DE DOUTRINA E INSTRUÇÃO MILITAR","EAD/CIAAR","DIRENS","CIAAR","1","20/04/2026","15/05/2026","INSC. ABERTAS","20/02/2026"],
+  ["COMGEP","EPA","ESTÁGIO DE PSICOLOGIA DA AERONÁUTICA","Rio de Janeiro","COMGEP","IPA","1","06/04/2026","10/04/2026","INSC. ABERTAS","20/02/2026"],
+  ["DCTA","GQ NBR ISO 9001:2015","CURSO DE SISTEMA DE GESTÃO DA QUALIDADE NBR ISO 9001:2015","IEAD","DCTA","IFI","1","20/04/2026","12/06/2026","INSC. ABERTAS","20/02/2026"],
+  ["DECEA","SAR001","COORDENAÇÃO SAR","ICEA","SDOP-SAR","ICEA","1","13/04/2026","29/05/2026","INSC. ABERTAS","22/02/2026"],
+  ["DECEA","SAR005","BÁSICO DE BUSCA E SALVAMENTO","CINDACTA IV","SDOP-SAR","CINDACTA IV","2","13/04/2026","16/04/2026","INSC. ABERTAS","22/02/2026"],
+  ["DECEA","SAR005","BÁSICO DE BUSCA E SALVAMENTO","DTCEAFN","SDOP-SAR","CINDACTA III","3","13/04/2026","16/04/2026","INSC. ABERTAS","22/02/2026"],
+  ["DECEA","SEL012","SEGURANÇA EM INSTALAÇÕES E SERVIÇOS COM ALTA TENSÃO","CINDACTA II","SDTE-TMEM","CINDACTA II","2","13/04/2026","17/04/2026","INSC. ABERTAS","22/02/2026"],
+  ["DECEA","APH004","CAPACITAÇÃO E RECICLAGEM EM SEGURANÇA PARA TRABALHO EM ALTURA DO SISCEAB - NÍVEL 1","ICEA","SDAD-AIN","ICEA","5","14/04/2026","16/04/2026","INSC. ABERTAS","23/02/2026"],
+  ["DECEA","APH004","CAPACITAÇÃO E RECICLAGEM EM SEGURANÇA PARA TRABALHO EM ALTURA DO SISCEAB - NÍVEL 1","DTCEATNB","SDAD-AIN","CINDACTA I","6","14/04/2026","16/04/2026","INSC. ABERTAS","23/02/2026"],["COMGEP","CAEF","CURSO DE CAPACITAÇÃO EM EDUCAÇÃO FINANCEIRA.","EAD","N/D","DIRAP","1","13/04/2026","15/05/2026","INSC. ABERTAS","27/02/2026"],
+  ["COMGAP","CBFQ","CURSO BÁSICO DE FACILITADORES DA QUALIDADE","ILAVIRTUAL","TODOS","ILA","1","04/05/2026","22/05/2026","INSC. ABERTAS","04/03/2026"],
+  ["COMGAP","CBFQ","CURSO BÁSICO DE FACILITADORES DA QUALIDADE","ILAVIRTUAL","TODOS","ILA","2","08/09/2026","18/10/2026","INSC. ABERTAS","04/03/2026"],
+  ["COMGAP","CCSTI","CURSO DE CONSCIENTIZAÇÃO EM SEGURANÇA DE TECNOLOGIA DA INFORMAÇÃO","ILAVIRTUAL","STI","ILA","1","04/05/2026","31/05/2026","INSC. ABERTAS","04/03/2026"],
+  ["COMGAP","CBA-MC","CURSO DE ESPECIALIZAÇÃO DE BOMBEIRO DE AERÓDROMO MOTORISTA/OPERADOR DE CCI","ILAVIRTUAL/BANT","SISCON","ILA","1","04/05/2026","10/07/2026","INSC. ABERTAS","04/03/2026"],
+  ["COMGAP","CBA-MC","CURSO DE ESPECIALIZAÇÃO DE BOMBEIRO DE AERÓDROMO MOTORISTA/OPERADOR DE CCI","ILAVIRTUAL/CLA","SISCON","ILA","2","04/05/2026","28/08/2026","INSC. ABERTAS","04/03/2026"],
+  ["COMGAP","COEM","CURSO DE OPERADOR DE EQUIPAMENTOS MECANIZADOS","BABV","SISCAN","ILA","3","04/05/2026","15/05/2026","INSC. ABERTAS","04/03/2026"],
+  ["COMGAP","COEM","CURSO DE OPERADOR DE EQUIPAMENTOS MECANIZADOS","BACG","SISCAN","ILA","4","04/05/2026","15/05/2026","INSC. ABERTAS","04/03/2026"],
+  ["DCTA","CPAQ","CURSO DE PREPARAÇÃO DE AUDITORES DA QUALIDADE","IFI","DCTA","IFI","1","04/05/2026","08/05/2026","INSC. ABERTAS","04/03/2026"],
+  ["COMGEP","CATF","CURSO PARA APLICAÇÃO DO TESTE DE CONDICIONAMENTO FÍSICO","EAD/CIAAR","COMGEP","CDA","3","27/04/2026","15/05/2026","PROGRAMADO","06/03/2026"],
+  ["COMGEP","CGD","CURSO DE GESTÃO DE DOCUMENTOS","GAP-DF","COMGEP","CENDOC","2","04/05/2026","08/05/2026","PROGRAMADO","06/03/2026"],
+  ["COMGAP","CCP","CURSO DE CARGAS PERIGOSAS","BAPV","SISCAN","ILA","2","04/05/2026","15/05/2026","INSC. ABERTAS","06/03/2026"],
+  ["DECEA","PLJ001S","PADRONIZAÇÃO DE MANUTENÇÃO DO SILOMS - SISCEAB","ICEAVIRTUAL/ICEA","SDTE-TENG","ICEA","1","27/04/2026","15/05/2026","INSC. ABERTAS","08/03/2026"],
+  ["COMGEP","CBMM","CURSO BÁSICO DE MODERADOR DO MOODLE","EAD","COMGEP","CIAAR","2","18/05/2026","26/05/2026","PROGRAMADO","09/03/2026"],
+  ["COMGEP","CBO - CIAAR","CURSO BÁSICO DE ORATÓRIA – CBO","EAD","COMGEP","CIAAR","1","18/05/2026","10/07/2026","PROGRAMADO","09/03/2026"],
+  ["COMGEP","CEPD","CURSO DE EXTENSÃO EM ECONOMIA E PLANEJAMENTO DE DEFESA","ESD","COMGEP","ESD","1","11/08/2026","28/08/2026","PROGRAMADO","09/03/2026"],
+  ["COMGEP","CMAED","CURSO METODOLOGIAS ATIVAS PARA EDUCAÇÃO DIGITAL – (CMAED)","EAD","COMGEP","CIAAR","1","18/05/2026","10/07/2026","PROGRAMADO","09/03/2026"],
+  ["COMGEP","CDIPLOD","CURSO DE DIPLOMACIA E DEFESA","ESD","COMGEP","ESD","1","13/02/2026","12/03/2026","PROGRAMADO","12/03/2026"],
+  ["DECEA","CTP001","CAPACITAÇÃO PARA INSTRUTORES","DECEA","SDAD-CTP","DECEA","4","04/05/2026","15/05/2026","INSC. ABERTAS","15/03/2026"],
+  ["DECEA","SAR005","BÁSICO DE BUSCA E SALVAMENTO","CINDACTA II","SDOP-SAR","CINDACTA II","4","04/05/2026","07/05/2026","INSC. ABERTAS","15/03/2026"],
+  ["DECEA","SAR005","BÁSICO DE BUSCA E SALVAMENTO","EEAR","SDOP-SAR","CINDACTA I","5","04/05/2026","08/05/2026","INSC. ABERTAS","15/03/2026"],
+  ["DECEA","SEC003E","SEGURANÇA CIBERNÉTICA AVSEC","ICEAVIRTUAL","SDAD-AVSEC","ICEA","1","04/05/2026","22/05/2026","INSC. ABERTAS","15/03/2026"],
+  ["COMGEP","CIAD","CURSO DE INTELIGÊNCIA ARTIFICIAL PARA DOCENTES","EAD","COMGEP","CIAAR","1","25/05/2026","09/08/2026","PROGRAMADO","16/03/2026"],
+  ["DCTA","IAC OFFSET","CURSO DE INTRODUÇÃO AOS ACORDOS DE COMPENSAÇÃO (OFFSET)","IFI","DCTA","IFI","1","18/05/2026","22/05/2026","INSC. ABERTAS","18/03/2026"],
+  ["DECEA","SEL011","SEGURANÇA EM INSTALAÇÕES E SERVIÇOS COM ELETRICIDADE","CINDACTA I","SDTE-TMEM","CINDACTA I","4","11/05/2026","15/05/2026","INSC. ABERTAS","22/03/2026"],
+  ["DECEA","SEL011","SEGURANÇA EM INSTALAÇÕES E SERVIÇOS COM ELETRICIDADE","CRCEA-SE","SDTE-TMEM","CRCEA-SE","5","11/05/2026","15/05/2026","INSC. ABERTAS","22/03/2026"],
+  ["DECEA","CLI001","BÁSICO DE MANUTENÇÃO PREVENTIVA NIVEL ORGÂNICO E BASE EM SISTEMAS DE CLIMATIZAÇÃO PARA A HABILITAÇÃO DE TÉCNICOS NÍVEL PLENO","ICEA","SDTE-TMEM","ICEA","3","11/05/2026","29/05/2026","INSC. ABERTAS","22/03/2026"],
+  ["DECEA","APH007","CAPACITAÇÃO E RECICLAGEM EM SEGURANÇA PARA TRABALHO EM ALTURA DO SISCEAB - NÍVEL 2","2/1 GCC","SDAD-AIN","1 GCC","2","11/05/2026","15/05/2026","INSC. ABERTAS","22/03/2026"],
+  ["DECEA","APH007","CAPACITAÇÃO E RECICLAGEM EM SEGURANÇA PARA TRABALHO EM ALTURA DO SISCEAB - NÍVEL 2","CINDACTA I","SDAD-AIN","CINDACTA I","3","11/05/2026","15/05/2026","INSC. ABERTAS","22/03/2026"],
+  ["DECEA","SAR005","BÁSICO DE BUSCA E SALVAMENTO","EEAR","SDOP-SAR","CINDACTA I","6","11/05/2026","15/05/2026","INSC. ABERTAS","22/03/2026"],
+  ["DECEA","SEL014M","RECICLAGEM EM SEGURANÇA EM INSTALAÇÕES E SERVIÇOS COM ALTA TENSÃO","ICEAVIRTUAL","SDTE-TMEM","ICEA","1","11/05/2026","29/05/2026","INSC. ABERTAS","22/03/2026"],
+  ["COMGEP","CGERD/SP","CURSO DE GESTÃO DE RECURSOS DE DEFESA","FIESP","COMGEP","ESG","1","10/08/2026","02/10/2026","PROGRAMADO","23/03/2026"],
+  ["CIAER","CAI-OF/GD","ANÁLISE DE INTELIGÊNCIA","CIAER/CIAER","CIAER","CIAER","1","04/05/2026","10/07/2026","INSC. ABERTAS","25/03/2026"],["COMGEP","CPJM","CURSO DE POLICIA JUDICIARIA MILITAR","UNIFA","DIRENS","UNIFA","1","18/05/2026","29/05/2026","PROGRAMADO","27/03/2026"],
+  ["DECEA","CTP001","CAPACITAÇÃO PARA INSTRUTORES","CINDACTA I","SDAD-CTP","CINDACTA I","5","18/05/2026","29/05/2026","INSC. ABERTAS","29/03/2026"],
+  ["DECEA","APH007","CAPACITAÇÃO E RECICLAGEM EM SEGURANÇA PARA TRABALHO EM ALTURA DO SISCEAB - NÍVEL 2","4/1 GCC","SDAD-AIN","1 GCC","4","18/05/2026","22/05/2026","INSC. ABERTAS","29/03/2026"],
+  ["COMGEP","CILESP","CURSO DE IMERSÃO EM LÍNGUA ESPANHOLA (CILESP)","UNIFA","DIRENS","UNIFA","1","08/06/2026","12/06/2026","PROGRAMADO","30/03/2026"],
+  ["COMGEP","ITESS","INSTRUÇÃO TÉCNICA ESPECIALIZADA EM SERVIÇO SOCIAL","EAD","COMGEP","DIRAP","1","11/05/2026","10/07/2026","PROGRAMADO","31/03/2026"],
+  ["COMGAP","CASUP","CURSO DE ATUALIZAÇÃO DE SUPRIMENTISTA","ILAVIRTUAL","SISMAB","ILA","1","01/06/2026","02/08/2026","INSC. ABERTAS","01/04/2026"],
+  ["COMGAP","CECAMP-MB","CURSO DE ENGENHARIA DE CAMPANHA MÓDULO BÁSICO","ILAVIRTUAL","SISENG","ILA","1","01/06/2026","28/06/2026","INSC. ABERTAS","01/04/2026"],
+  ["COMGAP","CECIE","CURSO ELEMENTAR DE CONTRAINCÊNDIO DE EDIFICAÇÕES","ILAVIRTUAL/BAAF","SISCON","ILA","1","01/06/2026","28/09/2026","INSC. ABERTAS","01/04/2026"],
+  ["COMGAP","CFACC-MO","CURSO DE FISCALIZAÇÃO, ACOMPANHAMENTO E CONTROLE DE CONTRATOS - MÓDULO OBRAS","ILAVIRTUAL/ILA","TODOS","ILA","1","01/06/2026","28/07/2026","INSC. ABERTAS","01/04/2026"],
+  ["COMGEP","CPJM","CURSO DE POLICIA JUDICIARIA MILITAR","CIAAR","DIRENS","CIAAR","2","15/06/2026","26/06/2026","PROGRAMADO","03/04/2026"],
+  ["CIAER","CTIS","CURSO DE TRATAMENTO DE INFORMAÇÃO SIGILOSA","CIAER","CIAER","CIAER","1","11/05/2026","29/05/2026","INSC. ABERTAS","03/04/2026"],
+  ["COMGEP","CASI","CURSO DE APERFEIÇOAMENTO EM SAÚDE DO IDOSO","EAD","COMGEP","DIRSA","1","26/05/2026","08/06/2026","PROGRAMADO","06/04/2026"],
+  ["COMGEP","CSSDC","CURSO SUPERIOR DE SEGURANÇA E DEFESA CIBERNÉTICA","EAD/ESG","COMGEP","ESG","1","27/07/2026","06/11/2026","PROGRAMADO","06/04/2026"],
+  ["COMGAP","CCP","CURSO DE CARGAS PERIGOSAS","BABE","SISCAN","ILA","3","08/06/2026","19/06/2026","INSC. ABERTAS","08/04/2026"],
+  ["COMGAP","CBSI","CURSO BÁSICO DE SEGURANÇA DA INFORMAÇÃO","ILAVIRTUAL","STI","ILA","1","08/06/2026","05/07/2026","INSC. ABERTAS","08/04/2026"],
+  ["COMGAP","CBTAU","CURSO BÁSICO DE TÉCNICA DE ATENDIMENTO AO USUÁRIO","ILAVIRTUAL","STI","ILA","1","08/06/2026","05/07/2026","INSC. ABERTAS","08/04/2026"],
+  ["COMGEP","CILING","CURSO DE IMERSÃO EM LÍNGUA INGLESA (CILING)","UNIFA","DIRENS","UNIFA","1","22/06/2026","26/06/2026","PROGRAMADO","14/04/2026"],
+  ["COMGEP","EPA-I","ESTÁGIO DE PSICOLOGIA DA AERONÁUTICA - ITINERANTE","BAMN","COMGEP","IPA","1","15/06/2026","19/06/2026","PROGRAMADO","15/04/2026"],
+  ["COMGAP","COEM","CURSO DE OPERADOR DE EQUIPAMENTOS MECANIZADOS","CTLA","SISCAN","ILA","5","15/06/2026","26/06/2026","INSC. ABERTAS","15/04/2026"],
+  ["COMGEP","CPDQBRN","CURSO PRÁTICO EM DEFESA QUÍMICA, BIOLÓGICA, RADIOLÓGICA E NUCLEAR (CPDQBRN)","IMAE","COMGEP","DIRSA","1","08/06/2026","09/06/2026","PROGRAMADO","20/04/2026"],
+  ["COMGAP","COEM","CURSO DE OPERADOR DE EQUIPAMENTOS MECANIZADOS","PAMA LS","SISCAN","ILA","6","22/06/2026","03/07/2026","INSC. ABERTAS","22/04/2026"],
+  ["COMGAP","CECIE","CURSO ELEMENTAR DE CONTRAINCÊNDIO DE EDIFICAÇÕES","ILAVIRTUAL/EEAR","SISCON","ILA","2","29/06/2026","09/10/2026","INSC. ABERTAS","29/04/2026"],
+  ["DCTA","ABNT NBR ISO/IEC 17025:2017","CURSO DE INTERPRETAÇÃO DA NORMA ABNT NBR ISO/IEC 17025:2017","IEAD","DCTA","IFI","2","29/06/2026","30/07/2026","INSC. ABERTAS","29/04/2026"],
+  ["COMGEP","CATF","CURSO PARA APLICAÇÃO DO TESTE DE CONDICIONAMENTO FÍSICO","EAD/SEREP-MN","COMGEP","CDA","4","01/06/2026","19/06/2026","PROGRAMADO","04/05/2026"],
+  ["COMGEP","CPEAMS","CURSO DE PREVENÇÃO E ENFRENTAMENTO AO ASSÉDIO MORAL E SEXUAL","EAD","COMGEP","DIRENS","2","15/06/2026","29/06/2026","PROGRAMADO","06/05/2026"]
+]
+function renderTable(){
+    const tbody = document.querySelector("#courseTable tbody");
+    tbody.innerHTML = "";
+
+    const search = document.getElementById("searchInput").value.toLowerCase();
+    const selectedMonth = document.getElementById("monthFilter").value;
+
+    const filtered = data.filter(r => {
+        const textMatch = r.join(" ").toLowerCase().includes(search);
+        const monthMatch = selectedMonth ? r[10].split("/")[1] === selectedMonth : true;
+        return textMatch && monthMatch;
+    });
+
+    const start = (currentPage - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+
+    filtered.slice(start, end).forEach(r => {
+        const tr = document.createElement("tr");
+        r.forEach((c, index) => {
+            const td = document.createElement("td");
+            td.setAttribute("data-label", document.querySelectorAll("th")[index].textContent);
+            td.innerHTML = `<span>${c}</span>`;
+            tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+    });
+
+    renderPagination(filtered.length);
+}
+
+function renderPagination(total){
+    const pages = Math.ceil(total / rowsPerPage);
+    const pag = document.getElementById("pagination");
+    pag.innerHTML = "";
+    for(let i=1;i<=pages;i++){
+        const btn=document.createElement("button");
+        btn.textContent=i;
+        btn.className=i===currentPage?"active":"";
+        btn.onclick=()=>{currentPage=i;renderTable();};
+        pag.appendChild(btn);
+    }
+}
+
+function updateCounter(){
+    let count=localStorage.getItem("agenda_visits");
+    count=count?parseInt(count)+1:1;
+    localStorage.setItem("agenda_visits",count);
+    const now=new Date();
+    document.getElementById("counter").innerHTML=
+        `👁️ Acessos: <strong>${count}</strong> | 📅 ${now.toLocaleDateString("pt-BR")} ${now.toLocaleTimeString("pt-BR")}`;
+}
+
+document.getElementById("searchInput").addEventListener("input",()=>{currentPage=1;renderTable();});
+document.getElementById("monthFilter").addEventListener("change",()=>{currentPage=1;renderTable();});
+
+updateCounter();
+renderTable();
+</script>
+
+</body>
+</html>
